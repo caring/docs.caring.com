@@ -1,0 +1,786 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/caring_logo.png" class="logo" alt="Caring logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#json-api-introduction" class="toc-h1 toc-link" data-title="JSON API Introduction">JSON API Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#reviews" class="toc-h1 toc-link" data-title="Reviews">Reviews</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#querying-the-collection" class="toc-h2 toc-link" data-title="Reviews">Querying the collection</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-single-review" class="toc-h2 toc-link" data-title="Reviews">Get a single Review</a>
+                  </li>
+                  <li>
+                    <a href="#creating-a-review" class="toc-h2 toc-link" data-title="Reviews">Creating a Review</a>
+                  </li>
+                  <li>
+                    <a href="#creating-a-response-to-a-review" class="toc-h2 toc-link" data-title="Reviews">Creating a Response to a Review</a>
+                  </li>
+                  <li>
+                    <a href="#updates-webhook-beta" class="toc-h2 toc-link" data-title="Reviews">Updates webhook (Beta)</a>
+                  </li>
+              </ul>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='#'>Contact us for a Developer Key</a></li>
+            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='json-api-introduction'>JSON API Introduction</h1>
+<p>Caring.com provides <a href="http://jsonapi.org/">JSON API</a> compliant APIs over HTTPS. Examples are provided for shell assuming basic usage of Curl. Other language exmaples can be provided if requested.</p>
+
+<p>You can report API bugs with <a href="https://github.com/caring/reviews-api-docs/issues">github issues</a></p>
+<h1 id='authentication'>Authentication</h1>
+<p>Requests require an API key that you can obtain by contacting us.</p>
+
+<blockquote>
+<p>Authentication header example:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/example.jsonapi"</span> -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>TOKEN_VALUE</code> with your API key.</p>
+</blockquote>
+
+<p>Caring.com Directory expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Caring-Partner: TOKEN_VALUE</code></p>
+
+<aside class="notice">
+You must replace <code>TOKEN_VALUE</code> with your API key.
+</aside>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">These are not all, but some of the error codes you can get from us for varying reasons.</aside>
+
+<p>The Caring.com JSON API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is malformed.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong, or you&#39;re trying to be sneaky.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- not found.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that we don&#39;t support.</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Unprocessable Entity -- There was an validation error in your request. See the returned error messages.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+<h1 id='reviews'>Reviews</h1><h2 id='querying-the-collection'>Querying the collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?filter[resource_id]=1229142"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns <a href="http://jsonapi.org/">JSON API</a> response structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1148701"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_reviews"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"resource_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1229142</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"resource_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.caring.com/local/memory-care-facilities-in-dallas-texas/villages-of-lake-highlands"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"resource_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Villages of Lake Highlands"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am a friend or relative of a current/past resident"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a really good review"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"staff_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"activities_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"food_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"facilities_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"provider_response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thank you for your wonderful review"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"moderated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-20T14:42:44.000-07:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Satisfied Reviewer"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8225995e75243d26@example.com"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/people/satisfied-reviewer"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"origin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.caring.com/local/memory-care-facilities-in-dallas-texas/villages-of-lake-highlands#reviews"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-17T10:35:15.000-07:00"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-21T19:23:11.000-07:00"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?page%5Bnumber%5D=1&amp;page%5Bsize%5D=1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?page%5Bnumber%5D=2&amp;page%5Bsize%5D=1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?page%5Bnumber%5D=1799&amp;page%5Bsize%5D=1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a paginated list of reviews ordered by <code>last_modified</code> by default.</p>
+
+<p>To stay up to date, we recommend that you periodically check the reviews collection ordered by <code>last_modified</code> so you can efficently get the updates you need as moderation statuses or review content changes.</p>
+<h3 id='filter-parameters'>Filter Parameters</h3>
+<p>To filter the collection you can use any of the following parameters in the <code>filter</code> parameter.</p>
+
+<p><code>GET https://dir.caring.com/api/v2/reviews.jsonapi?filter[resource_id]=1229142&amp;filter[moderation_status]=approved</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resource_id</td>
+<td>Integer</td>
+<td>Numeric ID of the reviewed resource.</td>
+</tr>
+<tr>
+<td>resource_url</td>
+<td>Url</td>
+<td>The caring.com url of the reviewed resource.</td>
+</tr>
+<tr>
+<td>resource_name</td>
+<td>String</td>
+<td>The name of the reviewed resource.</td>
+</tr>
+<tr>
+<td>chain_name</td>
+<td>String</td>
+<td>The name of the chain owning the reviewed resource.</td>
+</tr>
+<tr>
+<td>author_name</td>
+<td>String</td>
+<td>The screen name of the author of the review.</td>
+</tr>
+<tr>
+<td>author_email</td>
+<td>Email Address</td>
+<td>The email address of the user posting the review.</td>
+</tr>
+<tr>
+<td>author_url</td>
+<td>Url</td>
+<td>A personal url to the author of the review.</td>
+</tr>
+<tr>
+<td>moderation_status</td>
+<td>Enum(&#39;approved&#39;, &#39;rejected&#39;, &#39;further_review&#39;, &#39;spam&#39;)</td>
+<td>The moderation status of the review.</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>String</td>
+<td>A sort clause made up of a field and direction Ex: <code>filter[sort]=id+asc</code> filters ids ascending.</td>
+</tr>
+</tbody></table>
+<h3 id='pagination-parameters'>Pagination Parameters</h3>
+<p><code>GET https://dir.caring.com/api/v2/reviews.jsonapi?page[number]=1&amp;page[size]=50</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>Integer</td>
+<td>The page number.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Integer</td>
+<td>The number of items per requested page.</td>
+</tr>
+</tbody></table>
+<h3 id='review-data-attributes'>Review Data Attributes</h3>
+<aside class="notice">
+For all of the numeric attributes 0 is equal to N/A
+</aside>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resource_id</td>
+<td>Integer</td>
+<td>The primary key ID of the service provider that was reviewed</td>
+</tr>
+<tr>
+<td>resource_url</td>
+<td>Url</td>
+<td>The public URL of the service provider that was reviewed.</td>
+</tr>
+<tr>
+<td>resource_name</td>
+<td>String</td>
+<td>The Name of the service provider that was reviewed</td>
+</tr>
+<tr>
+<td>author</td>
+<td>Object</td>
+<td><code>name</code>, <code>email</code> and <code>url</code> fields for the Author of the review.</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>The headline of the review, typically a description of the reviewers relation to the service provider provider.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>Text</td>
+<td>The full text of the review.</td>
+</tr>
+<tr>
+<td>origin_url</td>
+<td>Url</td>
+<td>A url to the site the review was created on.</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>1-5</td>
+<td>Overall Raring.</td>
+</tr>
+<tr>
+<td>staff_score</td>
+<td>1-5</td>
+<td>Staff Rating.</td>
+</tr>
+<tr>
+<td>activities_score</td>
+<td>1-5</td>
+<td>Rating of Leisure Activities.</td>
+</tr>
+<tr>
+<td>food_score</td>
+<td>1-5</td>
+<td>Rating of the food available.</td>
+</tr>
+<tr>
+<td>facilities_score</td>
+<td>1-5</td>
+<td>Rating of the facility quality and cleanliness.</td>
+</tr>
+<tr>
+<td>value_score</td>
+<td>1-5</td>
+<td>Rating of the value.</td>
+</tr>
+<tr>
+<td>provider_response</td>
+<td>Text</td>
+<td>A response to the review from the service provider.</td>
+</tr>
+<tr>
+<td>moderated_at</td>
+<td>Timestamp</td>
+<td>The timestamp of when the review was moderated.</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>Timestamp</td>
+<td>The timestamp of the review creation</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>Timestamp</td>
+<td>The timestamp of the last time the review was modified.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-single-review'>Get a single Review</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews/2.jsonapi"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1132501"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_reviews"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"resource_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1225974</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.caring.com/local/assisted-living-facilities-in-salisbury-maryland/lakeside-assisted-living-salisbury"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakeside Assisted Living"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I visited this facility"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakeside Assisted Living was nice, and I enjoyed the tour we had. The food was excellent, and the dining area was very clean and very appeasing to the eye. The staff was very nice, very informative, and met us as soon as we walked in. They had a beauty and barber shop."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"staff_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activities_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"food_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facilities_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"provider_response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thank you for your wonderful review Daniel!  You are welcome anytime. We strive to provide quality of life here at Lakeside."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"moderated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-20T14:42:44.000-07:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Daniel"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b7da7994a7a270ac@example.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"origin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.seniorhomes.com/f/md/lakeside-assisted-living-salisbury#reviews"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-17T10:35:15.000-07:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-21T19:23:11.000-07:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a single review.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://dir.caring.com/api/v2/reviews/:id.jsonapi</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>The id of the review to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='creating-a-review'>Creating a Review</h2><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://dir.caring.com/api/v2/reviews.jsonapi</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "data": {
+            "attributes": {
+                "resource_id": 1225974,
+                "title": "I visited this facility",
+                "content": "The facility was new and in good repair. The staff was warm and friendly.",
+                "rating": 5,
+                "staff_score": 5,
+                "activities_score": 5,
+                "food_score": 4,
+                "facilities_score": 5,
+                "value_score": 5,
+                "origin_url": "https://www.partner-site.com/assisted-living-in-california/nice-provider#reviews",
+                "author": {
+                    "name": "SatisfiedReviewer11",
+                    "email": "SatisfiedReviewer11@example.com",
+                    "url": "https://www.twitter.com/SatisfiedReviewer11"
+                }
+
+            }
+        }
+    }'</span>
+</code></pre>
+<blockquote>
+<p>A successful response will respond with JSON like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1148702"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local_reviews"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"resource_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1225974</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.caring.dev/local/assisted-living-facilities-in-salisbury-maryland/lakeside-assisted-living-salisbury"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"resource_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakeside Assisted Living"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I visited this facility"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The facility was new and in good repair. The staff was warm and friendly."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"staff_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activities_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"food_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facilities_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"provider_response"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unmoderated"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"moderated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SatisfiedReviewer11"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SatisfiedReviewer11@example.com"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.twitter.com/SatisfiedReviewer11"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"origin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.partner-site.com/assisted-living-in-california/nice-provider#reviews"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-28T14:34:47.259-07:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-28T14:34:47.259-07:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Error responses will contain JSON API formatted error messages:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/attributes/content"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"can't be blank"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-response-statuses'>HTTP Response Statuses</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>Created</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Unprocessable Entity</td>
+</tr>
+</tbody></table>
+<h2 id='creating-a-response-to-a-review'>Creating a Response to a Review</h2><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://dir.caring.com/api/v2/reviews/:id/responses.jsonapi</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews/2/responses.jsonapi"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "data": {
+            "attributes": {
+                public_response: "Thanks for the positive review.",
+                "author": {
+                    "name": "Jane Doe",
+                    "email": "jane.doe@example.com",
+                    "title": "Community Manager"
+                }
+
+            }
+        }
+    }'</span>
+</code></pre><h3 id='request-attributes'>Request Attributes</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>public_response</td>
+<td>Text</td>
+<td>The body of the response to the review.</td>
+</tr>
+<tr>
+<td>author_name</td>
+<td>String</td>
+<td>Name of the Author of the Review Response.</td>
+</tr>
+<tr>
+<td>author_title</td>
+<td>String</td>
+<td>Job title of the person responding to the review.</td>
+</tr>
+<tr>
+<td>author_email</td>
+<td>String</td>
+<td>Email address of the Author of the Review Response.</td>
+</tr>
+<tr>
+<td>author</td>
+<td>Object</td>
+<td>Convenient assignment of <code>name</code> ,<code>title</code> and <code>email</code> fields for the Author of the review.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>A successful response will respond with <code>HTTP 201 Created</code> and JSON like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provider_review_responses"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"local_review_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Manager"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.doe@example.com"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"public_response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thank you for your honesty, we'll work to address those issues."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-31T20:58:33.849-07:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-31T20:58:33.849-07:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Errors will respond with <code>HTTP 422 Unprocessable Entity</code> and contain JSON API formatted error messages:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/attributes/author_title"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"can't be blank"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='updates-webhook-beta'>Updates webhook (Beta)</h2>
+<p>We currently have a webhook that we use internally to notify our other sites when there are changes to a review. If you&#39;re interested in subscribing to the webhook to recieve updates, contact us and we&#39;ll make this avaialble.</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
