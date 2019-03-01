@@ -225,7 +225,24 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#error-codes" class="toc-h1 toc-link" data-title="Error Codes">Error Codes</a>
+          </li>
+          <li>
+            <a href="#inquiries" class="toc-h1 toc-link" data-title="Inquiries">Inquiries</a>
+          </li>
+          <li>
+            <a href="#leads" class="toc-h1 toc-link" data-title="Leads">Leads</a>
+          </li>
+          <li>
+            <a href="#lead-statuses" class="toc-h1 toc-link" data-title="Lead Statuses">Lead Statuses</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#creating-a-lead-status" class="toc-h2 toc-link" data-title="Lead Statuses">Creating a Lead Status</a>
+                  </li>
+                  <li>
+                    <a href="#allowed-statuses" class="toc-h2 toc-link" data-title="Lead Statuses">Allowed Statuses</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#reviews" class="toc-h1 toc-link" data-title="Reviews">Reviews</a>
@@ -279,7 +296,7 @@
 <aside class="notice">
 You must replace <code>TOKEN_VALUE</code> with your API key.
 </aside>
-<h1 id='errors'>Errors</h1>
+<h1 id='error-codes'>Error Codes</h1>
 <aside class="notice">These are not all, but some of the error codes you can get from us for varying reasons.</aside>
 
 <p>The Caring.com JSON API uses the following error codes:</p>
@@ -317,6 +334,523 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <tr>
 <td>503</td>
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+<h1 id='inquiries'>Inquiries</h1>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>affiliate_campaign</td>
+<td></td>
+<td>String</td>
+<td>Opaque string for the affiliate to use to store their campaign name. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>affiliate_lead_id</td>
+<td></td>
+<td>String</td>
+<td>The ID of the lead in the affiliate&#39;s system. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>affiliate_notes</td>
+<td></td>
+<td>String</td>
+<td>Free form text from the affiliate. Max length of 1024 characters.</td>
+</tr>
+<tr>
+<td>alternate_call_time</td>
+<td></td>
+<td>Time of Day</td>
+<td>The preferred time to call the alternate phone.</td>
+</tr>
+<tr>
+<td>alternate_payment_method</td>
+<td></td>
+<td>Payment Method</td>
+<td>A second way for the caregiver to pay for the care.</td>
+</tr>
+<tr>
+<td>alternate_phone_number</td>
+<td></td>
+<td>Phone Number</td>
+<td>A second phone number.</td>
+</tr>
+<tr>
+<td>browser</td>
+<td>✓</td>
+<td>String</td>
+<td>The user-agent string of the caregiver&#39;s browser. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>campaign_url</td>
+<td></td>
+<td>String</td>
+<td>The URL that the caregiver entered on. Caring.com may access this URL for quality assurance purposes. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>care_location</td>
+<td></td>
+<td>String</td>
+<td>The City and State (formatted as &quot;City, State&quot;) or Zipcode where care is desired. For home-care services, a zip code is preferred over a city. Caring.com will validate that this is a valid US region.</td>
+</tr>
+<tr>
+<td>email_address</td>
+<td>✓</td>
+<td>Email Address</td>
+<td>The email address of the caregiver. In addition to being well-formed, Email addresses are validated using a 3rd party data verification service.</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>✓</td>
+<td>String</td>
+<td>The first name of the caregiver. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>relationship_name</td>
+<td>✓ (*)</td>
+<td>Relationship Name</td>
+<td>The relationship of the caregiver to the care recipient. (*) Only one of relationship_name or inquiry_for must be included.</td>
+</tr>
+<tr>
+<td>ip_address</td>
+<td>✓</td>
+<td>IP Address</td>
+<td>The IP Address of the caregiver.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>✓</td>
+<td>String</td>
+<td>The last name of the caregiver. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>living_situation</td>
+<td></td>
+<td>Living Situation</td>
+<td>The current living situation of the care recipient.</td>
+</tr>
+<tr>
+<td>max_budget</td>
+<td></td>
+<td>Integer</td>
+<td>The maximum amount the caregiver can afford in US dollars/month.</td>
+</tr>
+<tr>
+<td>min_budget</td>
+<td></td>
+<td>Integer</td>
+<td>The least amount the caregiver is expecting to pay in US dollars/month.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td></td>
+<td>String</td>
+<td>Free form text from the caregiver. Max length of 1024 characters.</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td></td>
+<td>Payment Method</td>
+<td>How will the caregiver pay for the care.</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>✓</td>
+<td>Phone Number</td>
+<td>The primary phone number for contacting the caregiver.</td>
+</tr>
+<tr>
+<td>phone_qualified</td>
+<td>✓</td>
+<td>Affirmation</td>
+<td>Whether the affiliate has qualified the caregiver by phone.</td>
+</tr>
+<tr>
+<td>preferred_call_time</td>
+<td></td>
+<td>Time of Day</td>
+<td>The preferred time to call the primary phone.</td>
+</tr>
+<tr>
+<td>source_channel</td>
+<td></td>
+<td>Traffic Channel</td>
+<td>The traffic source used to acquire the lead.</td>
+</tr>
+<tr>
+<td>tour_time</td>
+<td></td>
+<td>Appointment</td>
+<td>The date and time when the caregiver will tour the provider.</td>
+</tr>
+<tr>
+<td>type_of_care</td>
+<td>✓</td>
+<td>Care Type</td>
+<td>What kind of care is being sought.</td>
+</tr>
+</tbody></table>
+<h1 id='leads'>Leads</h1>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>affiliate_campaign</td>
+<td></td>
+<td>String</td>
+<td>Opaque string for the affiliate to use to store their campaign name. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>affiliate_lead_id</td>
+<td></td>
+<td>String</td>
+<td>The ID of the lead in the affiliate&#39;s system. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>affiliate_notes</td>
+<td></td>
+<td>String</td>
+<td>Free form text from the affiliate. Max length of 1024 characters.</td>
+</tr>
+<tr>
+<td>alternate_call_time</td>
+<td></td>
+<td>Time of Day</td>
+<td>The preferred time to call the alternate phone.</td>
+</tr>
+<tr>
+<td>alternate_payment_method</td>
+<td></td>
+<td>Payment Method</td>
+<td>A second way for the caregiver to pay for the care.</td>
+</tr>
+<tr>
+<td>alternate_phone_number</td>
+<td></td>
+<td>Phone Number</td>
+<td>A second phone number.</td>
+</tr>
+<tr>
+<td>browser</td>
+<td>✓</td>
+<td>String</td>
+<td>The user-agent string of the caregiver&#39;s browser. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>campaign_url</td>
+<td></td>
+<td>String</td>
+<td>The URL that the caregiver entered on. Caring.com may access this URL for quality assurance purposes. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>care_location</td>
+<td></td>
+<td>String</td>
+<td>The City and State (formatted as &quot;City, State&quot;) or Zipcode where care is desired. For home-care services, a zip code is preferred over a city. Caring.com will validate that this is a valid US region.</td>
+</tr>
+<tr>
+<td>email_address</td>
+<td>✓</td>
+<td>Email Address</td>
+<td>The email address of the caregiver. In addition to being well-formed, Email addresses are validated using a 3rd party data verification service.</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>✓</td>
+<td>String</td>
+<td>The first name of the caregiver. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>relationship_name</td>
+<td>✓ (*)</td>
+<td>Relationship Name</td>
+<td>The relationship of the caregiver to the care recipient. (*) Only one of relationship_name or inquiry_for must be included.</td>
+</tr>
+<tr>
+<td>ip_address</td>
+<td>✓</td>
+<td>IP Address</td>
+<td>The IP Address of the caregiver.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>✓</td>
+<td>String</td>
+<td>The last name of the caregiver. Max length of 255 characters.</td>
+</tr>
+<tr>
+<td>living_situation</td>
+<td></td>
+<td>Living Situation</td>
+<td>The current living situation of the care recipient.</td>
+</tr>
+<tr>
+<td>max_budget</td>
+<td></td>
+<td>Integer</td>
+<td>The maximum amount the caregiver can afford in US dollars/month.</td>
+</tr>
+<tr>
+<td>min_budget</td>
+<td></td>
+<td>Integer</td>
+<td>The least amount the caregiver is expecting to pay in US dollars/month.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td></td>
+<td>String</td>
+<td>Free form text from the caregiver. Max length of 1024 characters.</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td></td>
+<td>Payment Method</td>
+<td>How will the caregiver pay for the care.</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>✓</td>
+<td>Phone Number</td>
+<td>The primary phone number for contacting the caregiver.</td>
+</tr>
+<tr>
+<td>phone_qualified</td>
+<td>✓</td>
+<td>Affirmation</td>
+<td>Whether the affiliate has qualified the caregiver by phone.</td>
+</tr>
+<tr>
+<td>preferred_call_time</td>
+<td></td>
+<td>Time of Day</td>
+<td>The preferred time to call the primary phone.</td>
+</tr>
+<tr>
+<td>provider_id</td>
+<td>✓</td>
+<td>String</td>
+<td>The ID of the provider for which this lead is being submitted.</td>
+</tr>
+<tr>
+<td>source_channel</td>
+<td></td>
+<td>Traffic Channel</td>
+<td>The traffic source used to acquire the lead.</td>
+</tr>
+<tr>
+<td>tour_time</td>
+<td></td>
+<td>Appointment</td>
+<td>The date and time when the caregiver will tour the provider.</td>
+</tr>
+<tr>
+<td>type_of_care</td>
+<td>✓</td>
+<td>Care Type</td>
+<td>What kind of care is being sought.</td>
+</tr>
+</tbody></table>
+<h1 id='lead-statuses'>Lead Statuses</h1><h2 id='creating-a-lead-status'>Creating a Lead Status</h2><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://dir.caring.com/api/v2/lead-status.json</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/lead-status.json"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "lead_id": "1234",
+        "status": "valid_lead",
+        "sub_status": "timeframe_30",
+        "notes": "After speaking with the customer, they will likely be moving within 30 days."
+    }'</span>
+</code></pre><h3 id='request-attributes'>Request Attributes</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lead_id</td>
+<td>String</td>
+<td>The id returned of the lead created on the API</td>
+</tr>
+<tr>
+<td>affiliate_lead_id</td>
+<td>String</td>
+<td>The id of the lead in your system. If you passed us this field on creation, you may use this param in place of <code>lead_id</code> for sending statuses. Normally, prefer <code>lead_id</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>One of the allowed lead statuses. <a href="#allowed-statuses">See Allowed Statuses</a></td>
+</tr>
+<tr>
+<td>sub_status</td>
+<td>String</td>
+<td>A more granular reason for the lead status. <a href="#allowed-statuses">See Allowed Statuses</a></td>
+</tr>
+<tr>
+<td>tour_time</td>
+<td>DateTime String</td>
+<td>An Hour of Day and a Date separated by a space. Ex: <code>07:00 01/31/2019</code>, <code>13:00 12/25/2019</code></td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String</td>
+<td>A string providing extra information about a lead. Limit 2,000 characters.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>A successful response will respond with a <code>200 OK</code> and JSON like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"lead_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"affiliate"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valid_lead"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sub_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"timeframe_30"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"After speaking with the customer, they will likely be moving within 30 days."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tour_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tour_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tour_completed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"moved_in_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-28T17:07:09.000-08:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"processed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Error responses will contain JSON API formatted error messages:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation Failed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"status"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"status </span><span class="se">\"</span><span class="s2">valid_leads</span><span class="se">\"</span><span class="s2"> is not a legal status. Must be one of valid_lead, accepted, changed_community, closed, community_not_appropriate, dummy_closed, email_only, inactive, interested_later, invalid_lead, memo, move_in_commitment, move_in_canceled, moved_in, moved_in_elsewhere, moved_in_elsewhere_commitment, moved_in_regulatory_exception, moved_out, mystery_shopper, no_interest_community, not_qualified, owner_changed, provider_qualified, reported_moved_in, reported_wait_list, tour_cancelled, tour_completed, tour_confirmed, tour_scheduled, tour_rescheduling, wait_list, reserved, receiving_care, pending, sold, credited_move_in, lead_received, lead_not_received"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-response-statuses'>HTTP Response Statuses</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Validation Failed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+</tr>
+</tbody></table>
+<h2 id='allowed-statuses'>Allowed Statuses</h2>
+<p>The following is a complete set of status and substatus pairs that we allow to be sent for updates.</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Sub Status</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>valid_lead</td>
+<td>timeframe_30</td>
+</tr>
+<tr>
+<td>valid_lead</td>
+<td>timeframe_90</td>
+</tr>
+<tr>
+<td>valid_lead</td>
+<td>timeframe_gt_90</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>required_care_unavailable</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>received_lead_previously</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>deceased</td>
+</tr>
+<tr>
+<td>invalid_lead</td>
+<td>unable_to_contact</td>
+</tr>
+<tr>
+<td>invalid_lead</td>
+<td>deceased</td>
+</tr>
+<tr>
+<td>invalid_lead</td>
+<td>bad_contact_information</td>
+</tr>
+<tr>
+<td>not_qualified</td>
+<td>too_young</td>
+</tr>
+<tr>
+<td>owner_changed</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>tour_completed</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>tour_confirmed</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>tour_scheduled</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>tour_rescheduling</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>wait_list</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>too_independent</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>too_much_care</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>too_young</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>budget_too_low</td>
 </tr>
 </tbody></table>
 <h1 id='reviews'>Reviews</h1><h2 id='querying-the-collection'>Querying the collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?filter[resource_id]=1229142"</span> <span class="se">\</span>
