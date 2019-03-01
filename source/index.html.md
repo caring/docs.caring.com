@@ -9,6 +9,7 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - lead_statuses
   - reviews
 
 search: true
