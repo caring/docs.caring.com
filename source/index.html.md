@@ -43,7 +43,7 @@ Caring.com Directory expects for the API key to be included in all API requests 
 You must replace <code>TOKEN_VALUE</code> with your API key.
 </aside>
 
-# Errors
+# Error Codes
 
 <aside class="notice">These are not all, but some of the error codes you can get from us for varying reasons.</aside>
 
