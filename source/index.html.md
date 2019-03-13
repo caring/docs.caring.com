@@ -21,7 +21,7 @@ search: true
 
 Caring.com provides [JSON API](http://jsonapi.org/) compliant APIs over HTTPS. Examples are provided for shell assuming basic usage of Curl. Other language exmaples can be provided if requested.
 
-You can report API bugs with [github issues](https://github.com/caring/reviews-api-docs/issues)
+You can report API bugs with [github issues](https://github.com/caring/docs.caring.com/issues)
 
 # Authentication
 
