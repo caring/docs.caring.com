@@ -9,9 +9,9 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - inquiries
   - leads
   - lead_statuses
+  - inquiries
   - reviews
 
 search: true
@@ -19,7 +19,7 @@ search: true
 
 # JSON API Introduction
 
-Caring.com provides [JSON API](http://jsonapi.org/) compliant APIs over HTTPS. Examples are provided for shell assuming basic usage of Curl. Other language exmaples can be provided if requested.
+Caring.com provides a JSON API over HTTPS. Examples are provided for shell assuming basic usage of Curl. Other language exmaples can be provided if requested.
 
 You can report API bugs with [github issues](https://github.com/caring/docs.caring.com/issues)
 
@@ -30,7 +30,7 @@ Requests require an API key that you can obtain by contacting us.
 > Authentication header example:
 
 ```shell
-curl "https://dir.caring.com/api/v2/example.jsonapi" -H "Caring-Partner: TOKEN_VALUE"
+curl "https://dir.caring.com/api/v2/example.json" -H "Caring-Partner: TOKEN_VALUE"
 ```
 
 > Make sure to replace `TOKEN_VALUE` with your API key.
