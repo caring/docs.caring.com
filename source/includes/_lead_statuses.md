@@ -47,7 +47,7 @@ notes | String | A string providing extra information about a lead. Limit 2,000 
 }
 ```
 
-> Error responses will contain JSON API formatted error messages:
+> Error responses will contain JSON formatted error messages:
 
 ```json
 {
