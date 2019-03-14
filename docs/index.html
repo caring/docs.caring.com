@@ -228,10 +228,12 @@
             <a href="#error-codes" class="toc-h1 toc-link" data-title="Error Codes">Error Codes</a>
           </li>
           <li>
-            <a href="#inquiries" class="toc-h1 toc-link" data-title="Inquiries">Inquiries</a>
-          </li>
-          <li>
             <a href="#leads" class="toc-h1 toc-link" data-title="Leads">Leads</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#creating-a-lead" class="toc-h2 toc-link" data-title="Leads">Creating a Lead</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#lead-statuses" class="toc-h1 toc-link" data-title="Lead Statuses">Lead Statuses</a>
@@ -239,8 +241,13 @@
                   <li>
                     <a href="#creating-a-lead-status" class="toc-h2 toc-link" data-title="Lead Statuses">Creating a Lead Status</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#inquiries" class="toc-h1 toc-link" data-title="Inquiries">Inquiries</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#allowed-statuses" class="toc-h2 toc-link" data-title="Lead Statuses">Allowed Statuses</a>
+                    <a href="#http-request" class="toc-h2 toc-link" data-title="Inquiries">HTTP Request</a>
                   </li>
               </ul>
           </li>
@@ -274,7 +281,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='json-api-introduction'>JSON API Introduction</h1>
-<p>Caring.com provides <a href="http://jsonapi.org/">JSON API</a> compliant APIs over HTTPS. Examples are provided for shell assuming basic usage of Curl. Other language exmaples can be provided if requested.</p>
+<p>Caring.com provides a JSON API over HTTPS. Examples are provided for shell assuming basic usage of Curl. Other language exmaples can be provided if requested.</p>
 
 <p>You can report API bugs with <a href="https://github.com/caring/docs.caring.com/issues">github issues</a></p>
 <h1 id='authentication'>Authentication</h1>
@@ -283,7 +290,7 @@
 <blockquote>
 <p>Authentication header example:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/example.jsonapi"</span> -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/example.json"</span> -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
 </code></pre>
 <blockquote>
 <p>Make sure to replace <code>TOKEN_VALUE</code> with your API key.</p>
@@ -336,167 +343,26 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
-<h1 id='inquiries'>Inquiries</h1>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Required</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>affiliate_campaign</td>
-<td></td>
-<td>String</td>
-<td>Opaque string for the affiliate to use to store their campaign name. Max length of 255 characters.</td>
-</tr>
-<tr>
-<td>affiliate_lead_id</td>
-<td></td>
-<td>String</td>
-<td>The ID of the lead in the affiliate&#39;s system. Max length of 255 characters.</td>
-</tr>
-<tr>
-<td>affiliate_notes</td>
-<td></td>
-<td>String</td>
-<td>Free form text from the affiliate. Max length of 1024 characters.</td>
-</tr>
-<tr>
-<td>alternate_call_time</td>
-<td></td>
-<td>Time of Day</td>
-<td>The preferred time to call the alternate phone.</td>
-</tr>
-<tr>
-<td>alternate_payment_method</td>
-<td></td>
-<td>Payment Method</td>
-<td>A second way for the caregiver to pay for the care.</td>
-</tr>
-<tr>
-<td>alternate_phone_number</td>
-<td></td>
-<td>Phone Number</td>
-<td>A second phone number.</td>
-</tr>
-<tr>
-<td>browser</td>
-<td>✓</td>
-<td>String</td>
-<td>The user-agent string of the caregiver&#39;s browser. Max length of 255 characters.</td>
-</tr>
-<tr>
-<td>campaign_url</td>
-<td></td>
-<td>String</td>
-<td>The URL that the caregiver entered on. Caring.com may access this URL for quality assurance purposes. Max length of 255 characters.</td>
-</tr>
-<tr>
-<td>care_location</td>
-<td></td>
-<td>String</td>
-<td>The City and State (formatted as &quot;City, State&quot;) or Zipcode where care is desired. For home-care services, a zip code is preferred over a city. Caring.com will validate that this is a valid US region.</td>
-</tr>
-<tr>
-<td>email_address</td>
-<td>✓</td>
-<td>Email Address</td>
-<td>The email address of the caregiver. In addition to being well-formed, Email addresses are validated using a 3rd party data verification service.</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>✓</td>
-<td>String</td>
-<td>The first name of the caregiver. Max length of 255 characters.</td>
-</tr>
-<tr>
-<td>relationship_name</td>
-<td>✓ (*)</td>
-<td>Relationship Name</td>
-<td>The relationship of the caregiver to the care recipient. (*) Only one of relationship_name or inquiry_for must be included.</td>
-</tr>
-<tr>
-<td>ip_address</td>
-<td>✓</td>
-<td>IP Address</td>
-<td>The IP Address of the caregiver.</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>✓</td>
-<td>String</td>
-<td>The last name of the caregiver. Max length of 255 characters.</td>
-</tr>
-<tr>
-<td>living_situation</td>
-<td></td>
-<td>Living Situation</td>
-<td>The current living situation of the care recipient.</td>
-</tr>
-<tr>
-<td>max_budget</td>
-<td></td>
-<td>Integer</td>
-<td>The maximum amount the caregiver can afford in US dollars/month.</td>
-</tr>
-<tr>
-<td>min_budget</td>
-<td></td>
-<td>Integer</td>
-<td>The least amount the caregiver is expecting to pay in US dollars/month.</td>
-</tr>
-<tr>
-<td>notes</td>
-<td></td>
-<td>String</td>
-<td>Free form text from the caregiver. Max length of 1024 characters.</td>
-</tr>
-<tr>
-<td>payment_method</td>
-<td></td>
-<td>Payment Method</td>
-<td>How will the caregiver pay for the care.</td>
-</tr>
-<tr>
-<td>phone_number</td>
-<td>✓</td>
-<td>Phone Number</td>
-<td>The primary phone number for contacting the caregiver.</td>
-</tr>
-<tr>
-<td>phone_qualified</td>
-<td>✓</td>
-<td>Affirmation</td>
-<td>Whether the affiliate has qualified the caregiver by phone.</td>
-</tr>
-<tr>
-<td>preferred_call_time</td>
-<td></td>
-<td>Time of Day</td>
-<td>The preferred time to call the primary phone.</td>
-</tr>
-<tr>
-<td>source_channel</td>
-<td></td>
-<td>Traffic Channel</td>
-<td>The traffic source used to acquire the lead.</td>
-</tr>
-<tr>
-<td>tour_time</td>
-<td></td>
-<td>Appointment</td>
-<td>The date and time when the caregiver will tour the provider.</td>
-</tr>
-<tr>
-<td>type_of_care</td>
-<td>✓</td>
-<td>Care Type</td>
-<td>What kind of care is being sought.</td>
-</tr>
-</tbody></table>
 <h1 id='leads'>Leads</h1>
+<p>A lead is the record for tracking customer interest for a resosource in the Caring.com catalog. For tracking we allow an <code>affiliate_lead_id</code> parameter to be passed so you can conveneiently use your internal record IDs to lookup a lead record or provide a status updates.</p>
+<h2 id='creating-a-lead'>Creating a Lead</h2><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://dir.caring.com/api/v2/leads.json</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/leads.json"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "provider_id: "CARING_PROVIDER_ID",
+        "affiliate_lead_id": "ID_OF_THE_LEAD_IN_YOUR_SYSTEM",
+        "email_address": "caring-lead@example.com",
+        "browser": "Some User-Agent string",
+        "care_location": "90210",
+        "first_name": "Max",
+        "last_name": "Powers",
+        "relationship_name": "spouse",
+        "phone_number": "3335551212",
+        "tour_time": "09:00 03/13/2019",
+        "type_of_care": "alzheimers_care_facilities"
+    }'</span>
+</code></pre>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -515,7 +381,7 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <td>affiliate_lead_id</td>
 <td></td>
 <td>String</td>
-<td>The ID of the lead in the affiliate&#39;s system. Max length of 255 characters.</td>
+<td>The ID of the lead your system if you want to continue to use that ID to track updates on the API. Max length of 255 characters.</td>
 </tr>
 <tr>
 <td>affiliate_notes</td>
@@ -574,8 +440,8 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <tr>
 <td>relationship_name</td>
 <td>✓ (*)</td>
-<td>Relationship Name</td>
-<td>The relationship of the caregiver to the care recipient. (*) Only one of relationship_name or inquiry_for must be included.</td>
+<td>String</td>
+<td>The relationship of the caregiver to the care recipient. <strong><em>Allowed Values:</em></strong> <strong>spouse, son, son_in_law, daughter, daughter_in_law, granddaughter, grandson, sister, brother, friend, myself, patient_client, job, other_relative, unknown.</strong></td>
 </tr>
 <tr>
 <td>ip_address</td>
@@ -659,10 +525,12 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <td>type_of_care</td>
 <td>✓</td>
 <td>Care Type</td>
-<td>What kind of care is being sought.</td>
+<td>What kind of care is being sought. <strong><em>Allowed Values:</em></strong> <strong>alzheimers_care_facilities, assisted_living_facilities, continuing_care_retirement_communities, geriatric_care_managers, home_healthcare_agencies, homecare_agencies, hospices, independent_living, nursing_homes.</strong></td>
 </tr>
 </tbody></table>
-<h1 id='lead-statuses'>Lead Statuses</h1><h2 id='creating-a-lead-status'>Creating a Lead Status</h2><h3 id='http-request'>HTTP Request</h3>
+<h1 id='lead-statuses'>Lead Statuses</h1>
+<p>A Lead Status is a record for tracking the progress of a lead. We&#39;re interested in as much detail as you can provide. See <a href="#allowed-status-and-sub-status">See Allowed Statuses</a> below to map your CRM statuses and Events on to Caring.com Lead Statuses.</p>
+<h2 id='creating-a-lead-status'>Creating a Lead Status</h2><h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://dir.caring.com/api/v2/lead-status.json</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/lead-status.json"</span> <span class="se">\</span>
   -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span> <span class="se">\</span>
@@ -693,12 +561,12 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <tr>
 <td>status</td>
 <td>String</td>
-<td>One of the allowed lead statuses. <a href="#allowed-statuses">See Allowed Statuses</a></td>
+<td>One of the allowed lead statuses. <a href="#allowed-status-and-sub-status">See Allowed Statuses</a></td>
 </tr>
 <tr>
 <td>sub_status</td>
 <td>String</td>
-<td>A more granular reason for the lead status. <a href="#allowed-statuses">See Allowed Statuses</a></td>
+<td>A more granular reason for the lead status. <a href="#allowed-status-and-sub-status">See Allowed Statuses</a></td>
 </tr>
 <tr>
 <td>tour_time</td>
@@ -731,7 +599,7 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Error responses will contain JSON API formatted error messages:</p>
+<p>Error responses will contain JSON formatted error messages:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
@@ -743,28 +611,8 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-response-statuses'>HTTP Response Statuses</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Success</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Validation Failed</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized</td>
-</tr>
-</tbody></table>
-<h2 id='allowed-statuses'>Allowed Statuses</h2>
-<p>The following is a complete set of status and substatus pairs that we allow to be sent for updates.</p>
+</span></code></pre><h3 id='allowed-status-and-sub-status'>Allowed Status and Sub-Status</h3>
+<p>The following is a complete set of <code>status</code> and <code>sub_status</code> pairs that we allow to be sent for updates.</p>
 
 <table><thead>
 <tr>
@@ -853,7 +701,45 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <td>budget_too_low</td>
 </tr>
 </tbody></table>
-<h1 id='reviews'>Reviews</h1><h2 id='querying-the-collection'>Querying the collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?filter[resource_id]=1229142"</span> <span class="se">\</span>
+<h3 id='http-response-statuses'>HTTP Response Statuses</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Validation Failed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+</tr>
+</tbody></table>
+<h1 id='inquiries'>Inquiries</h1>
+<p>An Inquiry is basically a lead without a <code>provider_id</code>. For a list of parameters <a href="#creating-a-lead">See Creating a Lead</a></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://dir.caring.com/api/v2/inquiries.json</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/inquiries.json"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span> <span class="se">\</span>
+  -d <span class="s1">'{
+        "affiliate_lead_id": "ID_OF_THE_LEAD_IN_YOUR_SYSTEM",
+        "email_address": "caring-lead@example.com",
+        "browser": "Some User-Agent string",
+        "care_location": "90210",
+        "first_name": "Max",
+        "last_name": "Powers",
+        "relationship_name": "spouse",
+        "phone_number": "3335551212",
+        "tour_time": "09:00 03/13/2019",
+        "type_of_care": "alzheimers_care_facilities"
+    }'</span>
+</code></pre><h1 id='reviews'>Reviews</h1><h2 id='querying-the-collection'>Querying the collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?filter[resource_id]=1229142"</span> <span class="se">\</span>
   -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
 </code></pre>
 <blockquote>
