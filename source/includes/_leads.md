@@ -12,7 +12,7 @@ A lead is the record for tracking customer interest for a resosource in the Cari
 curl "https://dir.caring.com/api/v2/leads.json" \
   -H "Caring-Partner: TOKEN_VALUE" \
   -d '{
-        "provider_id: "CARING_PROVIDER_ID",
+        "provider_id": "CARING_PROVIDER_ID",
         "affiliate_lead_id": "ID_OF_THE_LEAD_IN_YOUR_SYSTEM",
         "email_address": "caring-lead@example.com",
         "browser": "Some User-Agent string",
@@ -22,9 +22,13 @@ curl "https://dir.caring.com/api/v2/leads.json" \
         "relationship_name": "spouse",
         "phone_number": "3335551212",
         "tour_time": "09:00 03/13/2019",
-        "type_of_care": "alzheimers_care_facilities"
+        "type_of_care": "alzheimers_care_facilities",
+        "phone_qualified": "no",
+        "ip_address": "0.0.0.0"
     }'
 ```
+
+### Request Attributes
 
 |Name|Required|Data Type|Description|
 |--- |--- |--- |--- |
@@ -53,4 +57,76 @@ curl "https://dir.caring.com/api/v2/leads.json" \
 |provider_id|✓|String|The ID of the provider for which this lead is being submitted.|
 |source_channel||Traffic Channel|The traffic source used to acquire the lead.|
 |tour_time||Appointment|The date and time when the caregiver will tour the provider.|
-|type_of_care|✓|Care Type|What kind of care is being sought. **_Allowed Values:_** **alzheimers_care_facilities, assisted_living_facilities, continuing_care_retirement_communities, geriatric_care_managers, home_healthcare_agencies, homecare_agencies, hospices, independent_living, nursing_homes.** |
+|type_of_care|✓|Care Type|What kind of care is being sought. **_Allowed Values:_** **alzheimers_care_facilities, assisted_living_facilities, continuing_care_retirement_communities, geriatric_care_managers, home_healthcare_agencies, homecare_agencies, hospices, independent_living, nursing_homes**. |
+
+> A successful response will respond with `HTTP 200 OK` and JSON like this:
+
+```json
+{
+    "result": {
+        "id": 7558089,
+        "tour_time": "09:00 03/13/2019",
+        "affiliate_campaign": null,
+        "affiliate_lead_id": "ID_OF_THE_LEAD_IN_YOUR_SYSTEM",
+        "affiliate_notes": null,
+        "alternate_call_time": null,
+        "alternate_payment_method": null,
+        "alternate_phone_number": null,
+        "browser": "Some User-Agent string",
+        "campaign_url": null,
+        "care_location": "90210",
+        "email_address": "caring-lead@example.com",
+        "first_name": "Max",
+        "inquiry_for": "Spouse",
+        "ip_address": "0.0.0.0",
+        "last_name": "Powers",
+        "living_situation": null,
+        "max_budget": 0,
+        "min_budget": 0,
+        "notes": null,
+        "payment_method": null,
+        "phone_number": "(333) 555-1212",
+        "phone_qualified": "no",
+        "preferred_call_time": null,
+        "price": null,
+        "provider_id": 115,
+        "source_channel": null,
+        "care_level": null
+    }
+}
+```
+
+> Errors will respond with `HTTP 400 Bad Request` and contain JSON formatted error messages:
+
+```json
+{
+    "error_code": 400,
+    "error_message": "Validation Failed",
+    "errors": [
+        {
+            "field": "ip_address",
+            "message": "ip_address is required."
+        },
+        {
+            "field": "phone_qualified",
+            "message": "phone_qualified is required."
+        },
+        {
+            "field": "phone_qualified",
+            "message": "phone_qualified must be 'yes' or 'no'."
+        },
+        {
+            "field": "provider_id",
+            "message": "provider_id with ID CARING_PROVIDER_ID does not exist."
+        }
+    ]
+}
+```
+
+### HTTP Response Statuses
+
+Status | Description
+--------- | -----------
+200 | Success
+400 | Validation Failed
+401 | Unauthorized

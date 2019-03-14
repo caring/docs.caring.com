@@ -30,7 +30,7 @@ sub_status | String | A more granular reason for the lead status. [See Allowed S
 tour_time | DateTime String | An Hour of Day and a Date separated by a space. Ex: `07:00 01/31/2019`, `13:00 12/25/2019`
 notes | String | A string providing extra information about a lead. Limit 2,000 characters.
 
-> A successful response will respond with a `200 OK` and JSON like this:
+> A successful response will respond with an `HTTP 200 OK` and JSON like this:
 
 ```json
 {

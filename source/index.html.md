@@ -25,7 +25,7 @@ You can report API bugs with [github issues](https://github.com/caring/docs.cari
 
 # Authentication
 
-Requests require an API key that you can obtain by contacting us.
+Requests require an API key that you can obtain by contacting us at engineering AT caring.com
 
 > Authentication header example:
 
@@ -35,9 +35,9 @@ curl "https://dir.caring.com/api/v2/example.json" -H "Caring-Partner: TOKEN_VALU
 
 > Make sure to replace `TOKEN_VALUE` with your API key.
 
-Caring.com Directory expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Caring.com Directory expects for the API key to be included as a header in all API requests and for the requests to be made over HTTPS.
 
-`Caring-Partner: TOKEN_VALUE`
+**Request Header:** `Caring-Partner: TOKEN_VALUE`
 
 <aside class="notice">
 You must replace <code>TOKEN_VALUE</code> with your API key.

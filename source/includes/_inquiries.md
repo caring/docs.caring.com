@@ -2,6 +2,8 @@
 
 An Inquiry is basically a lead without a `provider_id`. For a list of parameters [See Creating a Lead](#creating-a-lead)
 
+## Creating an Inquiry
+
 ### HTTP Request
 
 `POST https://dir.caring.com/api/v2/inquiries.json`
@@ -19,6 +21,8 @@ curl "https://dir.caring.com/api/v2/inquiries.json" \
         "relationship_name": "spouse",
         "phone_number": "3335551212",
         "tour_time": "09:00 03/13/2019",
-        "type_of_care": "alzheimers_care_facilities"
+        "type_of_care": "alzheimers_care_facilities",
+        "phone_qualified": "no",
+        "ip_address": "0.0.0.0"
     }'
 ```
