@@ -247,7 +247,7 @@
             <a href="#inquiries" class="toc-h1 toc-link" data-title="Inquiries">Inquiries</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#http-request" class="toc-h2 toc-link" data-title="Inquiries">HTTP Request</a>
+                    <a href="#creating-an-inquiry" class="toc-h2 toc-link" data-title="Inquiries">Creating an Inquiry</a>
                   </li>
               </ul>
           </li>
@@ -285,7 +285,7 @@
 
 <p>You can report API bugs with <a href="https://github.com/caring/docs.caring.com/issues">github issues</a></p>
 <h1 id='authentication'>Authentication</h1>
-<p>Requests require an API key that you can obtain by contacting us.</p>
+<p>Requests require an API key that you can obtain by contacting us at engineering AT caring.com</p>
 
 <blockquote>
 <p>Authentication header example:</p>
@@ -296,9 +296,9 @@
 <p>Make sure to replace <code>TOKEN_VALUE</code> with your API key.</p>
 </blockquote>
 
-<p>Caring.com Directory expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Caring.com Directory expects for the API key to be included as a header in all API requests and for the requests to be made over HTTPS.</p>
 
-<p><code>Caring-Partner: TOKEN_VALUE</code></p>
+<p><strong>Request Header:</strong> <code>Caring-Partner: TOKEN_VALUE</code></p>
 
 <aside class="notice">
 You must replace <code>TOKEN_VALUE</code> with your API key.
@@ -350,7 +350,7 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/leads.json"</span> <span class="se">\</span>
   -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span> <span class="se">\</span>
   -d <span class="s1">'{
-        "provider_id: "CARING_PROVIDER_ID",
+        "provider_id": "CARING_PROVIDER_ID",
         "affiliate_lead_id": "ID_OF_THE_LEAD_IN_YOUR_SYSTEM",
         "email_address": "caring-lead@example.com",
         "browser": "Some User-Agent string",
@@ -360,9 +360,11 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
         "relationship_name": "spouse",
         "phone_number": "3335551212",
         "tour_time": "09:00 03/13/2019",
-        "type_of_care": "alzheimers_care_facilities"
+        "type_of_care": "alzheimers_care_facilities",
+        "phone_qualified": "no",
+        "ip_address": "0.0.0.0"
     }'</span>
-</code></pre>
+</code></pre><h3 id='request-attributes'>Request Attributes</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -525,7 +527,89 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <td>type_of_care</td>
 <td>✓</td>
 <td>Care Type</td>
-<td>What kind of care is being sought. <strong><em>Allowed Values:</em></strong> <strong>alzheimers_care_facilities, assisted_living_facilities, continuing_care_retirement_communities, geriatric_care_managers, home_healthcare_agencies, homecare_agencies, hospices, independent_living, nursing_homes.</strong></td>
+<td>What kind of care is being sought. <strong><em>Allowed Values:</em></strong> <strong>alzheimers_care_facilities, assisted_living_facilities, continuing_care_retirement_communities, geriatric_care_managers, home_healthcare_agencies, homecare_agencies, hospices, independent_living, nursing_homes</strong>.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>A successful response will respond with <code>HTTP 200 OK</code> and JSON like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7558089</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tour_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"09:00 03/13/2019"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"affiliate_campaign"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"affiliate_lead_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ID_OF_THE_LEAD_IN_YOUR_SYSTEM"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"affiliate_notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alternate_call_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alternate_payment_method"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alternate_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"browser"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some User-Agent string"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"campaign_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"care_location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90210"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"caring-lead@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inquiry_for"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Spouse"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ip_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Powers"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"living_situation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_budget"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"min_budget"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(333) 555-1212"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone_qualified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"preferred_call_time"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"provider_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"source_channel"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"care_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Errors will respond with <code>HTTP 400 Bad Request</code> and contain JSON formatted error messages:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Validation Failed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ip_address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ip_address is required."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone_qualified"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone_qualified is required."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone_qualified"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone_qualified must be 'yes' or 'no'."</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"field"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provider_id"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provider_id with ID CARING_PROVIDER_ID does not exist."</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-response-statuses'>HTTP Response Statuses</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Validation Failed</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
 </tr>
 </tbody></table>
 <h1 id='lead-statuses'>Lead Statuses</h1>
@@ -581,7 +665,7 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 </tbody></table>
 
 <blockquote>
-<p>A successful response will respond with a <code>200 OK</code> and JSON like this:</p>
+<p>A successful response will respond with an <code>HTTP 200 OK</code> and JSON like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"lead_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
@@ -723,7 +807,7 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 </tbody></table>
 <h1 id='inquiries'>Inquiries</h1>
 <p>An Inquiry is basically a lead without a <code>provider_id</code>. For a list of parameters <a href="#creating-a-lead">See Creating a Lead</a></p>
-<h3 id='http-request'>HTTP Request</h3>
+<h2 id='creating-an-inquiry'>Creating an Inquiry</h2><h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://dir.caring.com/api/v2/inquiries.json</code></p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/inquiries.json"</span> <span class="se">\</span>
   -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span> <span class="se">\</span>
@@ -737,7 +821,9 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
         "relationship_name": "spouse",
         "phone_number": "3335551212",
         "tour_time": "09:00 03/13/2019",
-        "type_of_care": "alzheimers_care_facilities"
+        "type_of_care": "alzheimers_care_facilities",
+        "phone_qualified": "no",
+        "ip_address": "0.0.0.0"
     }'</span>
 </code></pre><h1 id='reviews'>Reviews</h1><h2 id='querying-the-collection'>Querying the collection</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?filter[resource_id]=1229142"</span> <span class="se">\</span>
   -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
