@@ -1,5 +1,7 @@
 # Lead Statuses
 
+A Lead Status is a record for tracking the progress of a lead. We're interested in as much detail as you can provide. See [See Allowed Statuses](#allowed-status-and-sub-status) below to map your CRM statuses and Events on to Caring.com Lead Statuses.
+
 ## Creating a Lead Status
 
 ### HTTP Request
@@ -23,8 +25,8 @@ Parameter | Type | Description
 --------- | ----------- | -----------
 lead_id | String | The id returned of the lead created on the API
 affiliate_lead_id | String | The id of the lead in your system. If you passed us this field on creation, you may use this param in place of `lead_id` for sending statuses. Normally, prefer `lead_id`
-status | String | One of the allowed lead statuses. [See Allowed Statuses](#allowed-statuses)
-sub_status | String | A more granular reason for the lead status. [See Allowed Statuses](#allowed-statuses)
+status | String | One of the allowed lead statuses. [See Allowed Statuses](#allowed-status-and-sub-status)
+sub_status | String | A more granular reason for the lead status. [See Allowed Statuses](#allowed-status-and-sub-status)
 tour_time | DateTime String | An Hour of Day and a Date separated by a space. Ex: `07:00 01/31/2019`, `13:00 12/25/2019`
 notes | String | A string providing extra information about a lead. Limit 2,000 characters.
 
@@ -62,17 +64,9 @@ notes | String | A string providing extra information about a lead. Limit 2,000 
 }
 ```
 
-### HTTP Response Statuses
+### Allowed Status and Sub-Status
 
-Status | Description
---------- | -----------
-200 | Success
-400 | Validation Failed
-401 | Unauthorized
-
-## Allowed Statuses
-
-The following is a complete set of status and substatus pairs that we allow to be sent for updates.
+The following is a complete set of `status` and `sub_status` pairs that we allow to be sent for updates.
 
 Status | Sub Status
 ------ | ----------
@@ -96,3 +90,11 @@ closed | too_independent
 closed | too_much_care
 closed | too_young
 closed | budget_too_low
+
+### HTTP Response Statuses
+
+Status | Description
+--------- | -----------
+200 | Success
+400 | Validation Failed
+401 | Unauthorized
