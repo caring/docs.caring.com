@@ -44,6 +44,16 @@ Caring.com Directory expects for the API key to be included as a header in all A
 You must replace <code>TOKEN_VALUE</code> with your API key.
 </aside>
 
+# Testing Sandbox
+
+For testing and debugging, we maintain a fully featured testing sandbox. To use the sandbox replace the hostname `dir.caring.com` with `sandbox-dir.caring.com`.
+
+> Example request to the Sandbox environment:
+
+```shell
+curl "https://sandbox-dir.caring.com/api/v2/example.json" -H "Caring-Partner: TOKEN_VALUE"
+```
+
 # Error Codes
 
 <aside class="notice">These are not all, but some of the error codes you can get from us for varying reasons.</aside>
