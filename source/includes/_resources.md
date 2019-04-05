@@ -41,7 +41,6 @@ curl "https://dir.caring.com/api/v2/resources.json" \
         "https://d13iq96prksfh0.cloudfront.net/cdn/photos/217575/original.png"
       ],
       "thumbnail": "https://d13iq96prksfh0.cloudfront.net/cdn/photos/218935/150x150%23.jpeg",
-      "cpa": false,
       "national_aggregator": false,
       "enhanced": true,
       "pets_allowed": "",
@@ -53,7 +52,6 @@ curl "https://dir.caring.com/api/v2/resources.json" \
       ],
       "homecare_pulse_awards": "",
       "dma_region_code": 524,
-      "price": 0,
       "features": {
         "alzheimers_care": false,
         "diet": [],
@@ -74,8 +72,6 @@ curl "https://dir.caring.com/api/v2/resources.json" \
 ```
 
 ### Response Attributes
-
-The response is 
 
 |Name|Description|
 |--- |--- |
