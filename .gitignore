@@ -3,7 +3,6 @@
 .bundle
 .config
 coverage
-docs/CNAME
 InstalledFiles
 lib/bundler/man
 pkg
