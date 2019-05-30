@@ -245,6 +245,29 @@ curl "https://dir.caring.com/api/v2/reviews.jsonapi" \
 }
 ```
 
+### Review Data Attributes
+
+<aside class="notice">
+For all of the numeric attributes 0 is equal to N/A
+</aside>
+
+Attribute | Type     | Description
+--------- | --------- | ---------
+resource_id | Integer | The primary key ID of the service provider that was reviewed
+resource_url | Url | The public URL of the service provider that was reviewed.
+resource_name | String | The Name of the service provider that was reviewed
+author | Object | `name`, `email` and `url` fields for the Author of the review.
+title | String | The headline of the review, typically a description of the reviewers relation to the service provider provider.
+content | Text | The full text of the review.
+origin_url | Url | A url to the site the review was created on.
+moderation_webhook_url | Url | A URL where you can receive moderation status updates as a webhook.
+rating | 1-5 | Overall Raring.
+staff_score | 1-5 | Staff Rating.
+activities_score | 1-5 | Rating of Leisure Activities.
+food_score | 1-5 | Rating of the food available.
+facilities_score | 1-5 | Rating of the facility quality and cleanliness.
+value_score | 1-5 | Rating of the value.
+
 ### HTTP Response Statuses
 
 Status | Description
