@@ -1313,7 +1313,90 @@ For all of the numeric attributes 0 is equal to N/A
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-response-statuses'>HTTP Response Statuses</h3>
+</span></code></pre><h3 id='review-data-attributes-2'>Review Data Attributes</h3>
+<aside class="notice">
+For all of the numeric attributes 0 is equal to N/A
+</aside>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>resource_id</td>
+<td>Integer</td>
+<td>The primary key ID of the service provider that was reviewed</td>
+</tr>
+<tr>
+<td>resource_url</td>
+<td>Url</td>
+<td>The public URL of the service provider that was reviewed.</td>
+</tr>
+<tr>
+<td>resource_name</td>
+<td>String</td>
+<td>The Name of the service provider that was reviewed</td>
+</tr>
+<tr>
+<td>author</td>
+<td>Object</td>
+<td><code>name</code>, <code>email</code> and <code>url</code> fields for the Author of the review.</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>The headline of the review, typically a description of the reviewers relation to the service provider provider.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>Text</td>
+<td>The full text of the review.</td>
+</tr>
+<tr>
+<td>origin_url</td>
+<td>Url</td>
+<td>A url to the site the review was created on.</td>
+</tr>
+<tr>
+<td>moderation_webhook_url</td>
+<td>Url</td>
+<td>A URL where you can receive moderation status updates as a webhook.</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>1-5</td>
+<td>Overall Raring.</td>
+</tr>
+<tr>
+<td>staff_score</td>
+<td>1-5</td>
+<td>Staff Rating.</td>
+</tr>
+<tr>
+<td>activities_score</td>
+<td>1-5</td>
+<td>Rating of Leisure Activities.</td>
+</tr>
+<tr>
+<td>food_score</td>
+<td>1-5</td>
+<td>Rating of the food available.</td>
+</tr>
+<tr>
+<td>facilities_score</td>
+<td>1-5</td>
+<td>Rating of the facility quality and cleanliness.</td>
+</tr>
+<tr>
+<td>value_score</td>
+<td>1-5</td>
+<td>Rating of the value.</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-statuses'>HTTP Response Statuses</h3>
 <table><thead>
 <tr>
 <th>Status</th>
