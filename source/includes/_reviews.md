@@ -96,6 +96,7 @@ author | Object | `name`, `email` and `url` fields for the Author of the review.
 title | String | The headline of the review, typically a description of the reviewers relation to the service provider provider.
 content | Text | The full text of the review.
 origin_url | Url | A url to the site the review was created on.
+moderation_webhook_url | Url | A URL where you can receive moderation status updates as a webhook.
 rating | 1-5 | Overall Raring.
 staff_score | 1-5 | Staff Rating.
 activities_score | 1-5 | Rating of Leisure Activities.
@@ -203,7 +204,7 @@ curl "https://dir.caring.com/api/v2/reviews.jsonapi" \
         "type": "local_reviews",
         "attributes": {
             "resource_id": 1225974,
-            "resource_url": "http://www.caring.dev/local/assisted-living-facilities-in-salisbury-maryland/lakeside-assisted-living-salisbury",
+            "resource_url": "http://www.caring.test/local/assisted-living-facilities-in-salisbury-maryland/lakeside-assisted-living-salisbury",
             "resource_name": "Lakeside Assisted Living",
             "title": "I visited this facility",
             "content": "The facility was new and in good repair. The staff was warm and friendly.",
@@ -323,6 +324,40 @@ author | Object | Convenient assignment of `name` ,`title` and `email` fields fo
 }
 ```
 
-## Updates webhook (Beta)
+## Moderation Webhook
 
-We currently have a webhook that we use internally to notify our other sites when there are changes to a review. If you're interested in subscribing to the webhook to recieve updates, contact us and we'll make this avaialble.
+If a review is created with the `moderation_webhook_url` attribute set, a moderation action will trigger a request will be sent to that URL with an `HTTP POST`. This request includes all of the attributes that make up the review. The `POST` request will have a `User-Agent` header of `Caring.com Review Moderation Webhook` and a `Referer` header of `https://dir.caring.com`.
+
+> Example Webhook Payload
+
+```json
+{
+  "review": {
+    "id": 1579647,
+    "resource_id": 2664,
+    "resource_url": "http://www.caring.test/local/assisted-living-facilities-in-salisbury-maryland/lakeside-assisted-living",
+    "resource_name": "Lakeside Assisted Living",
+    "chain_name": null,
+    "title": "I am a friend or relative of a current/past resident",
+    "content": "My grandmother and grandfather stayed at this facility for several years.",
+    "rating": 5.0,
+    "staff_score": 5.0,
+    "activities_score": 5.0,
+    "food_score": 4.0,
+    "facilities_score": 4.0,
+    "value_score": 5.0,
+    "provider_response": null,
+    "moderation_status": "unmoderated",
+    "rejection_reason": null,
+    "moderated_at": null,
+    "author": {
+        "name": "SatisfiedReviewer11",
+        "email": "SatisfiedReviewer11@example.com",
+        "url": "https://www.twitter.com/SatisfiedReviewer11"
+    },
+    "origin_url": null,
+    "created_at": "2019-05-17T01:58:37.000-07:00",
+    "updated_at": "2019-05-17T02:10:34.000-07:00"
+  }
+}
+```
