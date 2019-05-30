@@ -278,7 +278,7 @@
                     <a href="#creating-a-response-to-a-review" class="toc-h2 toc-link" data-title="Reviews">Creating a Response to a Review</a>
                   </li>
                   <li>
-                    <a href="#updates-webhook-beta" class="toc-h2 toc-link" data-title="Reviews">Updates webhook (Beta)</a>
+                    <a href="#moderation-webhook" class="toc-h2 toc-link" data-title="Reviews">Moderation Webhook</a>
                   </li>
               </ul>
           </li>
@@ -1132,6 +1132,11 @@ For all of the numeric attributes 0 is equal to N/A
 <td>A url to the site the review was created on.</td>
 </tr>
 <tr>
+<td>moderation_webhook_url</td>
+<td>Url</td>
+<td>A URL where you can receive moderation status updates as a webhook.</td>
+</tr>
+<tr>
 <td>rating</td>
 <td>1-5</td>
 <td>Overall Raring.</td>
@@ -1411,9 +1416,42 @@ For all of the numeric attributes 0 is equal to N/A
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='updates-webhook-beta'>Updates webhook (Beta)</h2>
-<p>We currently have a webhook that we use internally to notify our other sites when there are changes to a review. If you&#39;re interested in subscribing to the webhook to recieve updates, contact us and we&#39;ll make this avaialble.</p>
+</span></code></pre><h2 id='moderation-webhook'>Moderation Webhook</h2>
+<p>If a review is created with the <code>moderation_webhook_url</code> attribute set, a moderation action will trigger a request will be sent to that URL with an <code>HTTP POST</code>. This request includes all of the attributes that make up the review. The <code>POST</code> request will have a <code>User-Agent</code> header of <code>Caring.com Review Moderation Webhook</code> and a <code>Referer</code> header of <code>https://dir.caring.com</code>.</p>
 
+<blockquote>
+<p>Example Webhook Payload</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"review"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1579647</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2664</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.caring.test/local/assisted-living-facilities-in-salisbury-maryland/lakeside-assisted-living"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"resource_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lakeside Assisted Living"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"chain_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I am a friend or relative of a current/past resident"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My grandmother and grandfather stayed at this facility for several years."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"staff_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"activities_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"food_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facilities_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"value_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"provider_response"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"moderation_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unmoderated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rejection_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"moderated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SatisfiedReviewer11"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SatisfiedReviewer11@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.twitter.com/SatisfiedReviewer11"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"origin_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-17T01:58:37.000-07:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-17T02:10:34.000-07:00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
