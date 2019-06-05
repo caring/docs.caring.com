@@ -61,7 +61,7 @@ To filter the collection you can use any of the following parameters in the `fil
 
 Parameter | Type | Description
 --------- | ------- | -----------
-resource_id | Integer | Numeric ID of the reviewed resource.
+resource_id | String | List of comma separated resource IDs. Ex: `filter[resource_id]=1234,5678` for multiple resources or `filter[resource_id]=1234` for single one.
 resource_url | Url | The caring.com url of the reviewed resource.
 resource_name | String | The name of the reviewed resource.
 chain_name | String |The name of the chain owning the reviewed resource.
