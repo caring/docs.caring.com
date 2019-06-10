@@ -61,7 +61,8 @@ To filter the collection you can use any of the following parameters in the `fil
 
 Parameter | Type | Description
 --------- | ------- | -----------
-resource_id | String | List of comma separated resource IDs. Ex: `filter[resource_id]=1234,5678` for multiple resources or `filter[resource_id]=1234` for single one.
+resource_id | List of comma separated resource IDs | ID of the reviewed resource. Ex: `filter[resource_id]=1234,5678` for multiple resources or `filter[resource_id]=1234` for single one.
+property_id | List of comma separated property IDs | ID of the property that connects multiple resource type. Ex: `filter[property_id]=1234,5678` for multiple properties or `filter[property_id]=1234` for single one.
 resource_url | Url | The caring.com url of the reviewed resource.
 resource_name | String | The name of the reviewed resource.
 chain_name | String |The name of the chain owning the reviewed resource.
@@ -204,6 +205,7 @@ curl "https://dir.caring.com/api/v2/reviews.jsonapi" \
         "type": "local_reviews",
         "attributes": {
             "resource_id": 1225974,
+            "property_id": 123,
             "resource_url": "http://www.caring.test/local/assisted-living-facilities-in-salisbury-maryland/lakeside-assisted-living-salisbury",
             "resource_name": "Lakeside Assisted Living",
             "title": "I visited this facility",
@@ -254,6 +256,7 @@ For all of the numeric attributes 0 is equal to N/A
 Attribute | Type     | Description
 --------- | --------- | ---------
 resource_id | Integer | The primary key ID of the service provider that was reviewed
+property_id | Integer | ID of the property that connects multiple resource type
 resource_url | Url | The public URL of the service provider that was reviewed.
 resource_name | String | The Name of the service provider that was reviewed
 author | Object | `name`, `email` and `url` fields for the Author of the review.
