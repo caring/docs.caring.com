@@ -1,6 +1,6 @@
 # Reviews
 
-## Querying the collection
+## Querying reviews
 
 ```shell
 curl "https://dir.caring.com/api/v2/reviews.jsonapi?filter[resource_id]=1229142" \
