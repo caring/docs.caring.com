@@ -236,6 +236,9 @@
                   <li>
                     <a href="#querying-the-collection" class="toc-h2 toc-link" data-title="Resources">Querying the collection</a>
                   </li>
+                  <li>
+                    <a href="#querying-a-particular-resource" class="toc-h2 toc-link" data-title="Resources">Querying a particular resource</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -404,9 +407,7 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
       </span><span class="s2">"no_self_qualified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="s2">"special_comment_extra"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Experience the best of both worlds, small and large. Wesley Woods is a warm and friendly community located in Newnan, a charming historic town that boasts all of the modern conveniences and is just a short drive from Atlanta with its metropolitan perks and world-class airport. Click here for directions to Wesley Woods of Newnan."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"resident_capacity"</span><span class="p">:</span><span class="w"> </span><span class="mi">162</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"local_resource_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"continuing_care_retirement_communities"</span><span class="w">
-      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"local_resource_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"continuing_care_retirement_communities"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"homecare_pulse_awards"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="s2">"dma_region_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">524</span><span class="p">,</span><span class="w">
       </span><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -426,7 +427,31 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
   </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://dir.caring.com/api/v2/resources.json?page=2&amp;page_size=50"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"prev"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='response-attributes'>Response Attributes</h3>
+</span></code></pre><h3 id='request-parameters-all-optional'>Request Parameters (all optional)</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>local_resource_type_id</td>
+<td>The ID of the resource type to filter by (e.g. 6, for assisted living)</td>
+</tr>
+<tr>
+<td>zip_code</td>
+<td>The zipcode to filter by (e.g. 94131)</td>
+</tr>
+<tr>
+<td>amenities</td>
+<td>A list of amenities to filter by, in the form <code>amenities=computer_room=true,low_fat=true</code></td>
+</tr>
+<tr>
+<td>page</td>
+<td>The page to return (e.g. 2)</td>
+</tr>
+</tbody></table>
+<h3 id='response-attributes'>Response Attributes</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -470,6 +495,10 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <td>The URL to the previous page of results</td>
 </tr>
 </tbody></table>
+<h2 id='querying-a-particular-resource'>Querying a particular resource</h2>
+<p><code>GET https://dir.caring.com/api/v2/resources/12341234.json</code></p>
+
+<p>(replace <code>12341234</code> with the ID of the resource you wish to query)</p>
 <h1 id='leads'>Leads</h1>
 <p>A lead is the record for tracking customer interest for a resosource in the Caring.com catalog. For tracking we allow an <code>affiliate_lead_id</code> parameter to be passed so you can conveneiently use your internal record IDs to lookup a lead record or provide a status updates.</p>
 <h2 id='creating-a-lead'>Creating a Lead</h2><h3 id='http-request'>HTTP Request</h3>
