@@ -47,9 +47,7 @@ curl "https://dir.caring.com/api/v2/resources.json" \
       "no_self_qualified": true,
       "special_comment_extra": "Experience the best of both worlds, small and large. Wesley Woods is a warm and friendly community located in Newnan, a charming historic town that boasts all of the modern conveniences and is just a short drive from Atlanta with its metropolitan perks and world-class airport. Click here for directions to Wesley Woods of Newnan.",
       "resident_capacity": 162,
-      "local_resource_types": [
-        "continuing_care_retirement_communities"
-      ],
+      "local_resource_types": ["continuing_care_retirement_communities"],
       "homecare_pulse_awards": "",
       "dma_region_code": 524,
       "features": {
@@ -71,16 +69,31 @@ curl "https://dir.caring.com/api/v2/resources.json" \
 }
 ```
 
+### Request Parameters (all optional)
+
+| Name                   | Description                                                                               |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| local_resource_type_id | The ID of the resource type to filter by (e.g. 6, for assisted living)                    |
+| zip_code               | The zipcode to filter by (e.g. 94131)                                                     |
+| amenities              | A list of amenities to filter by, in the form `amenities=computer_room=true,low_fat=true` |
+| page                   | The page to return (e.g. 2)                                                               |
+
 ### Response Attributes
 
-|Name|Description|
-|--- |--- |
-| results | A JSON array of resources |
-| page | The current page number of the collection |
-| page_size | The number of results on the page |
-| next_page | The next page number of the collection |
-| prev_page | The previous page number of the collection |
-| total_entries | The total number of results across all pages |
-| total_pages | The total number of pages that make up the collection |
-| next | The URL to the next page of results |
-| prev | The URL to the previous page of results |
+| Name          | Description                                           |
+| ------------- | ----------------------------------------------------- |
+| results       | A JSON array of resources                             |
+| page          | The current page number of the collection             |
+| page_size     | The number of results on the page                     |
+| next_page     | The next page number of the collection                |
+| prev_page     | The previous page number of the collection            |
+| total_entries | The total number of results across all pages          |
+| total_pages   | The total number of pages that make up the collection |
+| next          | The URL to the next page of results                   |
+| prev          | The URL to the previous page of results               |
+
+## Querying a particular resource
+
+`GET https://dir.caring.com/api/v2/resources/12341234.json`
+
+(replace `12341234` with the ID of the resource you wish to query)
