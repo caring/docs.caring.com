@@ -76,6 +76,7 @@ curl "https://dir.caring.com/api/v2/resources.json" \
 | local_resource_type_id | The ID of the resource type to filter by (e.g. 6, for assisted living)                    |
 | zip_code               | The zipcode to filter by (e.g. 94131)                                                     |
 | amenities              | A list of amenities to filter by, in the form `amenities=computer_room=true,low_fat=true` |
+| state_code             | State code to filter by `state_code=CA` |
 | page                   | The page to return (e.g. 2)                                                               |
 
 ### Response Attributes
