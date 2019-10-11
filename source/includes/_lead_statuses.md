@@ -79,6 +79,7 @@ closed | deceased
 invalid_lead | unable_to_contact
 invalid_lead | deceased
 invalid_lead | bad_contact_information
+move_in_commitment| N/A
 not_qualified | too_young
 owner_changed | N/A
 tour_completed | N/A
