@@ -281,6 +281,12 @@
                     <a href="#creating-a-response-to-a-review" class="toc-h2 toc-link" data-title="Reviews">Creating a Response to a Review</a>
                   </li>
                   <li>
+                    <a href="#querying-a-response-by-review" class="toc-h2 toc-link" data-title="Reviews">Querying a Response by Review</a>
+                  </li>
+                  <li>
+                    <a href="#querying-a-response-to-a-review" class="toc-h2 toc-link" data-title="Reviews">Querying a Response to a Review</a>
+                  </li>
+                  <li>
                     <a href="#moderation-webhook" class="toc-h2 toc-link" data-title="Reviews">Moderation Webhook</a>
                   </li>
               </ul>
@@ -1547,7 +1553,87 @@ For all of the numeric attributes 0 is equal to N/A
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='moderation-webhook'>Moderation Webhook</h2>
+</span></code></pre><h2 id='querying-a-response-by-review'>Querying a Response by Review</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews/2/responses.jsonapi"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provider_review_responses"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"local_review_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Manager"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.doe@example.com"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"public_response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thanks for the positive review."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-08T14:56:45.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-08T14:56:45.000-07:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a single response to a review.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://dir.caring.com/api/v2/reviews/:id/responses.jsonapi</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>The id of the review whose response is to be retrieved</td>
+</tr>
+</tbody></table>
+<h2 id='querying-a-response-to-a-review'>Querying a Response to a Review</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/provider_review_responses/2000.jsonapi"</span> <span class="se">\</span>
+  -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"provider_review_responses"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"local_review_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Community Manager"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.doe@example.com"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"public_response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thanks for the positive review."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-08T14:56:45.000-07:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-08T14:56:45.000-07:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a single response to a review.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://dir.caring.com/api/v2/provider_review_responses/:id.jsonapi</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:id</td>
+<td>The id of the response to a review to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='moderation-webhook'>Moderation Webhook</h2>
 <p>If a review is created with the <code>moderation_webhook_url</code> attribute set, a moderation action will trigger a request will be sent to that URL with an <code>HTTP POST</code>. This request includes all of the attributes that make up the review. The <code>POST</code> request will have a <code>User-Agent</code> header of <code>Caring.com Review Moderation Webhook</code> and a <code>Referer</code> header of <code>https://dir.caring.com</code>.</p>
 
 <blockquote>

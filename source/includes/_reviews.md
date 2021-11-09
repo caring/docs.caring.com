@@ -350,6 +350,90 @@ author | Object | Convenient assignment of `name` ,`title` and `email` fields fo
 }
 ```
 
+## Querying a Response by Review
+
+```shell
+curl "https://dir.caring.com/api/v2/reviews/2/responses.jsonapi" \
+  -H "Caring-Partner: TOKEN_VALUE"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "id": "2000",
+    "type": "provider_review_responses",
+    "attributes": {
+      "local_review_id": 2,
+      "author": {
+        "title": "Community Manager",
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com"
+      },
+      "public_response": "Thanks for the positive review.",
+      "status": "pending",
+      "created_at": "2021-10-08T14:56:45.000-07:00",
+      "updated_at": "2021-10-08T14:56:45.000-07:00"
+    }
+  }
+}
+```
+
+This endpoint retrieves a single response to a review.
+
+### HTTP Request
+
+`GET https://dir.caring.com/api/v2/reviews/:id/responses.jsonapi`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | The id of the review whose response is to be retrieved
+
+## Querying a Response to a Review
+
+```shell
+curl "https://dir.caring.com/api/v2/provider_review_responses/2000.jsonapi" \
+  -H "Caring-Partner: TOKEN_VALUE"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "id": "2000",
+    "type": "provider_review_responses",
+    "attributes": {
+      "local_review_id": 2,
+      "author": {
+        "title": "Community Manager",
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com"
+      },
+      "public_response": "Thanks for the positive review.",
+      "status": "pending",
+      "created_at": "2021-10-08T14:56:45.000-07:00",
+      "updated_at": "2021-10-08T14:56:45.000-07:00"
+    }
+  }
+}
+```
+
+This endpoint retrieves a single response to a review.
+
+### HTTP Request
+
+`GET https://dir.caring.com/api/v2/provider_review_responses/:id.jsonapi`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+:id | The id of the response to a review to retrieve
+
 ## Moderation Webhook
 
 If a review is created with the `moderation_webhook_url` attribute set, a moderation action will trigger a request will be sent to that URL with an `HTTP POST`. This request includes all of the attributes that make up the review. The `POST` request will have a `User-Agent` header of `Caring.com Review Moderation Webhook` and a `Referer` header of `https://dir.caring.com`.
