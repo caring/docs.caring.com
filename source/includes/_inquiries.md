@@ -23,6 +23,8 @@ curl "https://dir.caring.com/api/v2/inquiries.json" \
         "tour_time": "09:00 03/13/2019",
         "type_of_care": "alzheimers_care_facilities",
         "phone_qualified": "no",
+        "utm_source": "bamedical",
+        "utm_campaign": "b2b+marketing",
         "ip_address": "0.0.0.0"
     }'
 ```
