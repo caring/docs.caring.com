@@ -528,6 +528,8 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
         "tour_time": "09:00 03/13/2019",
         "type_of_care": "alzheimers_care_facilities",
         "phone_qualified": "no",
+        "utm_source": "bamedical",
+        "utm_campaign": "b2b+marketing",
         "ip_address": "0.0.0.0"
     }'</span>
 </code></pre><h3 id='request-attributes'>Request Attributes</h3>
@@ -697,6 +699,12 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 </tr>
 <tr>
 <td>utm_source</td>
+<td></td>
+<td>String</td>
+<td>Inbound tracking params for things like GA.</td>
+</tr>
+<tr>
+<td>utm_campaign</td>
 <td></td>
 <td>String</td>
 <td>Inbound tracking params for things like GA.</td>
@@ -999,6 +1007,8 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
         "tour_time": "09:00 03/13/2019",
         "type_of_care": "alzheimers_care_facilities",
         "phone_qualified": "no",
+        "utm_source": "bamedical",
+        "utm_campaign": "b2b+marketing",
         "ip_address": "0.0.0.0"
     }'</span>
 </code></pre><h1 id='reviews'>Reviews</h1><h2 id='querying-reviews'>Querying reviews</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://dir.caring.com/api/v2/reviews.jsonapi?filter[resource_id]=1229142"</span> <span class="se">\</span>
