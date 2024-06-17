@@ -24,6 +24,8 @@ curl "https://dir.caring.com/api/v2/leads.json" \
         "tour_time": "09:00 03/13/2019",
         "type_of_care": "alzheimers_care_facilities",
         "phone_qualified": "no",
+        "utm_source": "bamedical",
+        "utm_campaign": "b2b+marketing",
         "ip_address": "0.0.0.0"
     }'
 ```
@@ -59,6 +61,7 @@ curl "https://dir.caring.com/api/v2/leads.json" \
 |tour_time||Appointment|The date and time when the caregiver will tour the provider.|
 |type_of_care|✓|Care Type|What kind of care is being sought. **_Allowed Values:_** **alzheimers_care_facilities, assisted_living_facilities, continuing_care_retirement_communities, geriatric_care_managers, home_healthcare_agencies, homecare_agencies, hospices, independent_living, nursing_homes**. |
 |utm_source||String|Inbound tracking params for things like GA.|
+|utm_campaign||String|Inbound tracking params for things like GA.|
 
 > A successful response will respond with `HTTP 200 OK` and JSON like this:
 
