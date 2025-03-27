@@ -91,6 +91,7 @@ closed | too_independent
 closed | too_much_care
 closed | too_young
 closed | budget_too_low
+community_not_appropriate | N/A
 
 ### HTTP Response Statuses
 
