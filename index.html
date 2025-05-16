@@ -301,7 +301,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='json-api-introduction'>JSON API Introduction</h1>
-<p>Caring.com provides a JSON API over HTTPS. Examples are provided for shell assuming basic usage of Curl. Other language exmaples can be provided if requested.</p>
+<p>Caring.com provides a JSON API over HTTPS. Examples are provided for shell assuming basic usage of Curl. Other language examples can be provided if requested.</p>
 
 <p>You can report API bugs with <a href="https://github.com/caring/docs.caring.com/issues">github issues</a></p>
 <h1 id='authentication'>Authentication</h1>
@@ -331,7 +331,7 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 </blockquote>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://sandbox-dir.caring.com/api/v2/example.json"</span> -H <span class="s2">"Caring-Partner: TOKEN_VALUE"</span>
 </code></pre><h1 id='error-codes'>Error Codes</h1>
-<aside class="notice">These are not all, but some of the error codes you can get from us for varying reasons.</aside>
+<aside class="notice">These are some, but not all, of the error codes you can get from us for varying reasons.</aside>
 
 <p>The Caring.com JSON API uses the following error codes:</p>
 
@@ -351,7 +351,7 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- not found.</td>
+<td>Not Found -- The requested resource was not found.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -359,11 +359,11 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 </tr>
 <tr>
 <td>422</td>
-<td>Unprocessable Entity -- There was an validation error in your request. See the returned error messages.</td>
+<td>Unprocessable Entity -- There was a validation error in your request. See the returned error messages.</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error -- Our server encountered an unexpected condition that prevented it from fulfilling the request. Try again later.</td>
 </tr>
 <tr>
 <td>503</td>
@@ -967,6 +967,10 @@ You must replace <code>TOKEN_VALUE</code> with your API key.
 <tr>
 <td>closed</td>
 <td>budget_too_low</td>
+</tr>
+<tr>
+<td>community_not_appropriate</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 <h3 id='http-response-statuses'>HTTP Response Statuses</h3>
